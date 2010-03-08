@@ -4,6 +4,8 @@ require 'rake/gempackagetask'
 require 'rake/clean'
 require 'rake/rdoctask'
 
+require 'rake/gempackagetask'
+
 NAME           = 'oneeight'
 VERS           = '0.1'
 GEM_NAME       = "#{NAME}-#{VERS}.gem"
@@ -68,11 +70,9 @@ desc 'Run unit tests'
 task :test => [ :spec ]
 
 task :gem do
-  sh %{rake pkg/#{GEM_NAME}}
-end
-
-task :tgz do
-  sh %{rake pkg/#{TGZ_NAME}}
+  Dir.chdir('pkg')
+  sh %{gem build ../oneeight.gemspec}
+  Dir.chdir('..')
 end
 
 desc 'Build the gem and tarball'

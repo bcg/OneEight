@@ -9,7 +9,8 @@ Gem::Specification.new do |s|
 
   s.description = 'A Ruby 1.8 backwards compatibility C module for 1.9'
 
-  s.files      = Dir['ext/**/*']
+  s.files      = ["ext/extconf.rb", "ext/oneeight.c"]
+  s.extensions = ["ext/extconf.rb"]
   s.test_files = Dir['spec/**/*']
 
   s.rdoc_options  = ["--charset=UTF-8"]
